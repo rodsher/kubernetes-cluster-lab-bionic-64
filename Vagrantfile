@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
     master.vm.box = "hashicorp/bionic64"
     master.vm.hostname = "master"
     master.vm.network "private_network", ip: "10.0.0.2"
+    master.vm.network "forwarded_port", guest: 6443, host: 6443
     master.vm.provision :shell, path: "bootstrap.sh"
     master.vm.provider "virtualbox" do |v|
       v.cpus = 2
